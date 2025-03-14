@@ -6,6 +6,14 @@
 // Функция инициализации строки
 string creat(string st,int n)
 {
+    if (n <= 0)
+    {
+        string er;
+        creat(er,11);
+        er.st = "Index Error";
+        return er;
+    }
+
     st.st = malloc((n + 1)*sizeof(char));
     st.n = n;
     return st;
@@ -15,6 +23,7 @@ string concat(string a, string b)
 {
     string new;
     new.st = malloc((a.n + b.n + 1)*sizeof(char));
+    new.n = a.n+b.n;
     for (int i=0;i<a.n;i++)
     {
         new.st[i] = a.st[i];
@@ -43,7 +52,6 @@ string string_ex(string a,int i,int j)
         printf("%d",p);
         printf("%c\n",a.st[i + p]);
         minor.st[p] = a.st[i+p];
-
     }
 //    print(minor);
 //    printf("%d",minor.n);
@@ -55,6 +63,11 @@ string string_ex(string a,int i,int j)
 // выдает индекс подстроки в случае успешного поиска и минус 1 в случае если безуспешен
 int find(string a, string b, int reg)
 {
+    if ((a.st[0] == NULL) || (b.st[0] == NULL))
+    {
+        return -1;
+    }
+
     if (reg == 0)
     {
         int sov = 0;
@@ -114,16 +127,17 @@ string upper(string a)
     return a;
 }
 // считает количество символов b в строке a
-string nfind(string a,char b)
+int nfind(string a,char b)
 {
-    for (int i=0,num=0;i<a.n;i++)
+    int num = 0;
+    for (int i=0;i<a.n;i++)
     {
         if (a.st[i]==b)
         {
             num++;
         }
-
     }
+    return num;
 }
 
 

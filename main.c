@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include "library.h"
+
 int main(void) {
     SetConsoleOutputCP(65001);
     int x;

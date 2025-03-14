@@ -18,4 +18,5 @@ void print(string a);
 string input(string a);
 string capitalise(string a);
 string lower(string a);
+int nfind(string a,char b);
 #endif //LABA1_LIBRARY_H

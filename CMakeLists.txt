@@ -5,4 +5,5 @@ set(CMAKE_C_STANDARD 17)
 
 add_executable(Laba1 main.c
         library.h
-        Func_str.c)
+        Func_str.c
+        Test.c)

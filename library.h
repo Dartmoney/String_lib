@@ -7,7 +7,9 @@
 typedef struct{
     char *st;
     int n;
+    int kod;
 } string;
+int test_all(void);
 string string_ex(string a,int i,int j);
 string creat(string st,int n);
 //void print(string a);

@@ -11,11 +11,13 @@ string creat(string st,int n)
         string er;
         creat(er,11);
         er.st = "Index Error";
+        er.kod = -1;
         return er;
     }
 
     st.st = malloc((n + 1)*sizeof(char));
     st.n = n;
+    st.kod = 1;
     return st;
 }
 // Функция конкатенации строки на входе 2 строки
@@ -33,6 +35,7 @@ string concat(string a, string b)
         new.st[i] = b.st[n];
     }
 //    printf("%s", new.st);
+    new.kod = 1;
     return new;
 }
 //Функция для получения подстроки с  i-го по j-й элемент включительно. На входе строка и числа i,j
@@ -44,9 +47,15 @@ string string_ex(string a,int i,int j)
     string er;
     creat(er,11);
     er.st = "Index Error";
+    er.kod = -1;
     minor = creat(minor,c);
-    if ((a.n < i) || (a.n < j) || (i < 0) || (j<i) )
+    if ((a.n < i) || (a.n < j) || (i < 0) || (j<i) || (j<0))
         return er;
+    if (a.st == NULL)
+    {
+        er.kod=-2;
+        return er;
+    }
     for (int p=0;p<c;p++)
     {
         printf("%d",p);
@@ -55,6 +64,7 @@ string string_ex(string a,int i,int j)
     }
 //    print(minor);
 //    printf("%d",minor.n);
+    minor.kod=1;
     return minor;
 }
 //Функция для поиска подстроки.
@@ -65,9 +75,11 @@ int find(string a, string b, int reg)
 {
     if ((a.st[0] == NULL) || (b.st[0] == NULL))
     {
-        return -1;
+        return -2;
     }
-
+    if ((a.n < b.n)){
+        return -3;
+    }
     if (reg == 0)
     {
         int sov = 0;
